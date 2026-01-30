@@ -1,7 +1,13 @@
+import NavBar from "./components/NavBar";
 import ProductsPage from "./pages/ProductsPage";
 
 const App = () => {
-  return <ProductsPage />;
+  return (
+    <>
+      <NavBar />
+      <ProductsPage />
+    </>
+  );
 };
 
 export default App;
