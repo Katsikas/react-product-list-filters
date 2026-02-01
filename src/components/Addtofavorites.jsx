@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-const Addtocart = () => {
-  const [cart, setCart] = useState(false);
-
+const Addtofavorites = () => {
   return (
     <img
       src="/heart.svg"
@@ -14,4 +10,4 @@ const Addtocart = () => {
   );
 };
 
-export default Addtocart;
+export default Addtofavorites;

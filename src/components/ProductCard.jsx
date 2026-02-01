@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Addtocart from "./Addtocart";
+import Addtofavorites from "./Addtofavorites";
 
 const ProductCard = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="product-card">
       <div className="product-image">
-        <Addtocart />
+        <Addtofavorites />
         <img
           src={product.image}
           height={145}

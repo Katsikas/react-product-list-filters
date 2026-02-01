@@ -19,14 +19,23 @@
   --dark-blue: hsl(216, 43%, 7%);
   --cover-blue: hsl(218, 45%, 10%);
   --action-orange: hsl(29, 100%, 56%);
+  --cube: cubic-bezier(0.42, 0, 0.44, 1.68);
 }
-
+#root {
+  width: 100%;
+}
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100svh;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  min-width: 100%;
 }
 
 h1 {
@@ -92,11 +101,13 @@ nav img:hover {
 
 .sidenav {
   min-width: 150px;
-  height: 100vh;
+  height: 100svh;
   position: fixed;
   top: 0;
   left: -20vh;
   display: flex;
+  flex-direction: column;
+  gap: 2em;
   padding: 8vh 1em;
   z-index: 1;
   background-color: hsla(216, 43%, 5%, 0.99);
@@ -135,10 +146,68 @@ nav img:hover {
   background-color: #172b4d;
 }
 
+.sidenav .clear-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5em 0.7em;
+  color: var(--dark-blue);
+  font-size: 1.1em;
+  background-color: var(--action-orange);
+  transition: 200ms var(--cube);
+  cursor: pointer;
+}
+.sidenav .clear-btn:hover {
+  transform: scale(1.04) translateY(-2px);
+}
+
+.filters-con {
+  width: 100%;
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+}
+
+.filters-con ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  gap: 1em;
+}
+.filters-con button {
+  text-transform: capitalize;
+  font-size: 1em;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5em 0.7em;
+  background-color: var(--cover-blue);
+  cursor: pointer;
+  transition:
+    transform 150ms var(--cube),
+    color 150ms ease;
+}
+.filters-con button:hover {
+  transform: scale(1.02);
+}
+
+.filters-con button.active {
+  transform: scale(1.02);
+  background-color: var(--action-orange);
+  color: var(--dark-blue);
+  font-weight: 600;
+}
+
+.filters-con .clear-btn {
+  font-size: 0.9em;
+  border: none;
+  background-color: transparent;
+}
+
 .product-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 1em;
   justify-content: center;
   color: #213547;
   margin: 10vh 5vh;
@@ -150,7 +219,7 @@ nav img:hover {
   border-radius: 22px;
   padding: 0.7em;
   background-color: var(--dark-blue);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -245,4 +314,30 @@ nav img:hover {
   justify-items: center;
   padding: 0.2em 0.5em;
   cursor: pointer;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin-top: 15vh;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e0e0e0;
+  border-top: 4px solid var(--cover-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

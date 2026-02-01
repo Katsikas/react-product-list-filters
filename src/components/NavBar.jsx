@@ -1,11 +1,31 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Sidenav from "./Sidenav";
 
-const NavBar = ({ categories }) => {
+const NavBar = ({
+  categories,
+  selectedCategory,
+  onCategorySelect,
+  onClearFilters,
+}) => {
   const [showNav, setShowNav] = useState(false);
+  const navRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setShowNav(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <>
+    <div>
       <header>
         <nav>
           <a href="/">
@@ -29,8 +49,9 @@ const NavBar = ({ categories }) => {
             </button> */}
             <button
               type="button"
-              onClick={() => {
-                setShowNav(!showNav);
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowNav((v) => !v);
               }}
             >
               <img src="/burger.svg" alt="search" />
@@ -38,8 +59,15 @@ const NavBar = ({ categories }) => {
           </div>
         </nav>
       </header>
-      <Sidenav showNav={showNav} categories={categories} />
-    </>
+      <Sidenav
+        ref={navRef}
+        showNav={showNav}
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onSelect={onCategorySelect}
+        onClear={onClearFilters}
+      />
+    </div>
   );
 };
 

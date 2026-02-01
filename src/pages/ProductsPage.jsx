@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { fetchProducts } from "../services/productsApi";
 import ProductGrid from "../components/ProductGrid";
 import NavBar from "../components/NavBar";
+import Filters from "../components/Filters";
+import Loader from "../components/Loader";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     async function getProducts() {
@@ -25,15 +28,40 @@ const ProductsPage = () => {
     getProducts();
   }, []);
 
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const handleClearFilters = () => {
+    setSelectedCategory(null);
+  };
+
+  const filteredProducts = selectedCategory
+    ? products.filter((p) => p.category === selectedCategory)
+    : products;
+
   const categories = [...new Set(products.map((p) => p.category))];
 
   return (
     <>
-      <NavBar categories={categories} />
-      <div>
-        {loading && <p>Loading products...</p>}
+      <NavBar
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategorySelect={handleCategorySelect}
+        onClearFilters={handleClearFilters}
+      />
+      <div className="main">
+        {loading && <Loader />}
         {error && <p>{error}</p>}
-        {!loading && !error && <ProductGrid products={products} />}
+        {filteredProducts && (
+          <Filters
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategorySelect={handleCategorySelect}
+            onClearFilters={handleClearFilters}
+          />
+        )}
+        {!loading && !error && <ProductGrid products={filteredProducts} />}
       </div>
     </>
   );
