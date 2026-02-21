@@ -52,7 +52,18 @@ const ProductsPage = () => {
       />
       <div className="main">
         {loading && <Loader />}
-        {error && <p>{error}</p>}
+        {error && (
+          <div className="error-con">
+            <p>{error}</p>
+            <button
+              onClick={() => {
+                window.location.reload();
+              }}
+            >
+              Retry
+            </button>
+          </div>
+        )}
         {filteredProducts && (
           <Filters
             categories={categories}

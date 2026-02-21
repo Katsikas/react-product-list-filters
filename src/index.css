@@ -34,6 +34,7 @@ body {
 .main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   min-height: 100svh;
   min-width: 100%;
 }
@@ -314,6 +315,41 @@ nav img:hover {
   justify-items: center;
   padding: 0.2em 0.5em;
   cursor: pointer;
+}
+
+.error-con {
+  width: 50%;
+  height: 35svh;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  padding: 2em;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.error-con p {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.error-con button {
+  font-size: 1em;
+  color: #172b4d;
+  font-weight: 600;
+  padding: 1em 1.2em;
+  border-radius: 8px;
+  background: var(--action-orange);
+  border: none;
+  cursor: pointer;
+  transition: 200ms ease;
+}
+
+.error-con button:hover {
+  transform: scale(0.99);
 }
 
 .loader-container {
