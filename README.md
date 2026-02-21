@@ -11,28 +11,10 @@ https://fakestoreapi.com/products
 
 - Fetch products from REST API
 - Responsive product grid layout
-- Search by product title
 - Filter by category
 - Loading and error handling states
 - Modular component-based architecture
 
-## 🧱 Project Structure
-
-src/
-├─ components/
-│ ├─ ProductCard.jsx
-│ ├─ ProductGrid.jsx
-│ ├─ Filters.jsx
-│ └─ Loader.jsx
-│
-├─ pages/
-│ └─ ProductsPage.jsx
-│
-├─ services/
-│ └─ productsApi.js
-│
-├─ App.jsx
-└─ main.jsx
 
 ## 🛠 Tech Stack
 
