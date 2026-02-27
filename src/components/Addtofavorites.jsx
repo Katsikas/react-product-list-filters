@@ -1,4 +1,4 @@
-const Addtofavorites = () => {
+const AddToFavorites = () => {
   return (
     <img
       src="/heart.svg"
@@ -10,4 +10,4 @@ const Addtofavorites = () => {
   );
 };
 
-export default Addtofavorites;
+export default AddToFavorites;

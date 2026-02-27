@@ -1,0 +1,55 @@
+import CartSummary from "../components/CartSummary";
+import { useCart } from "../context/CardContext";
+import { useNavigate } from "react-router-dom";
+import CartItem from "../components/CartItem";
+
+const Cart = () => {
+  const navigate = useNavigate();
+  const { state } = useCart();
+  const { cartItems } = state;
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="cart-page empty">
+        <div className="breadcrumbs">
+          <h4 className="breadcrumbs-link" onClick={() => navigate("/")}>
+            Home &gt;
+          </h4>
+          <h4>Cart</h4>
+        </div>
+        <div className="empty-cart">
+          <h2>Your Cart is empty</h2>
+          <button className="action-btn" onClick={() => navigate("/")}>
+            Go to Home
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="cart-page">
+      <div>
+        <div className="breadcrumbs">
+          <h4 className="breadcrumbs-link" onClick={() => navigate("/")}>
+            Home &gt;
+          </h4>
+          <h4>Cart</h4>
+        </div>
+        <h1>Your Cart</h1>
+      </div>
+      <div className="cart-content">
+        <div className="cart-items">
+          {cartItems.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+        </div>
+        <div className="cart-summary">
+          <CartSummary />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Cart;
