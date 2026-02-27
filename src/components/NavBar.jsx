@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Sidenav from "./Sidenav";
+import { Link } from "react-router-dom";
 
 const NavBar = ({
   categories,
@@ -28,7 +29,7 @@ const NavBar = ({
     <div>
       <header>
         <nav>
-          <a href="/">
+          <Link to="/">
             <img
               src="/heart_white.svg"
               height={25}
@@ -36,7 +37,7 @@ const NavBar = ({
               className="logo"
               alt="logo"
             />
-          </a>
+          </Link>
           <ul className="navbar-links">
             <li>**</li>
             <li>**</li>

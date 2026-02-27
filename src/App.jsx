@@ -1,9 +1,12 @@
-import NavBar from "./components/NavBar";
-import Sidenav from "./components/Sidenav";
+import { Route, Routes } from "react-router-dom";
 import ProductsPage from "./pages/ProductsPage";
 
 const App = () => {
-  return <ProductsPage />;
+  return (
+    <Routes>
+      <Route path="/" element={<ProductsPage />} />
+    </Routes>
+  );
 };
 
 export default App;
