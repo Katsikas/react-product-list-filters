@@ -1,13 +1,20 @@
 import { useState } from "react";
-import Addtofavorites from "./Addtofavorites";
+import AddToFavorites from "./AddToFavorites";
+import { useCart } from "../context/CardContext";
 
 const ProductCard = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
 
+  const { dispatch } = useCart();
+
+  const handleAddToCart = () => {
+    dispatch({ type: "ADD_TO_CART", payload: product });
+  };
+
   return (
     <div className="product-card">
       <div className="product-image">
-        <Addtofavorites />
+        <AddToFavorites />
         <img
           src={product.image}
           height={145}
@@ -42,6 +49,9 @@ const ProductCard = ({ product }) => {
             >
               +
             </button>
+          </div>
+          <div className="add-to-cart">
+            <button onClick={handleAddToCart}>Add to cart</button>
           </div>
         </div>
       </div>

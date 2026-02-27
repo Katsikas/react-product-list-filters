@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Sidenav from "./Sidenav";
+import { useCart } from "../context/CardContext";
 import { Link } from "react-router-dom";
 
 const NavBar = ({
@@ -10,6 +11,12 @@ const NavBar = ({
 }) => {
   const [showNav, setShowNav] = useState(false);
   const navRef = useRef();
+  const { state } = useCart();
+
+  const totalItems = state.cartItems.reduce(
+    (sum, item) => sum + item.quantity,
+    0,
+  );
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -45,9 +52,11 @@ const NavBar = ({
           </ul>
 
           <div className="navbar-actions">
-            {/* <button>
-              <img src="/cart.svg" alt="cart" />
-            </button> */}
+            <Link to={"/cart"}>
+              <span>{totalItems}</span>
+              <img src="/shopping.svg" height={22} width={22} alt="cart" />
+            </Link>
+
             <button
               type="button"
               onClick={(e) => {

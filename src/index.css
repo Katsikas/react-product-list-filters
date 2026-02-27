@@ -90,6 +90,7 @@ nav img:hover {
 
 .navbar-actions {
   display: flex;
+  align-items: center;
   flex-direction: row;
   gap: 1em;
 }
@@ -271,7 +272,7 @@ nav img:hover {
 }
 
 .product-details .category {
-  font-size: 0.9em;
+  font-size: 0.7em;
   font-weight: 600;
   color: var(--action-orange);
   align-self: flex-start;
