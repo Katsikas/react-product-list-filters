@@ -123,7 +123,7 @@ nav img:hover {
   height: 100svh;
   position: fixed;
   top: 0;
-  left: -20vh;
+  left: -50vh;
   display: flex;
   flex-direction: column;
   gap: 2em;
@@ -183,9 +183,9 @@ nav img:hover {
   width: 100%;
   margin-top: 10vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-self: center;
-  justify-self: center;
+  align-items: center;
 }
 
 .filters-con ul {
