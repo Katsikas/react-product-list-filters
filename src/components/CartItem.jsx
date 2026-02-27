@@ -4,11 +4,13 @@ export default function CartItem({ item }) {
   const { dispatch } = useCart();
 
   return (
-    <div>
-      <div>
-        <img src={item.image} alt={item.title} height={145} width={145} />
-        <div>
-          <div>
+    <div className="item">
+      <div className="item-inner">
+        <div className="img-wrapper">
+          <img src={item.image} alt={item.title} height={115} width={115} />
+        </div>
+        <div className="item-content">
+          <div className="delete-cart">
             <img
               src="/delete.svg"
               onClick={() =>
@@ -16,13 +18,14 @@ export default function CartItem({ item }) {
               }
             />
           </div>
-          <div>
-            <span>Size:</span>
-            <span>{item.size}</span>
+
+          <div className="item-title">
+            <h3>{item.title}</h3>
           </div>
-          <div>
-            <h1>${item.price}</h1>
-            <div>
+
+          <div className="item-price">
+            <h2>${item.price}</h2>
+            <div className="cart-quantity">
               <img
                 src="/remove.svg"
                 onClick={() =>

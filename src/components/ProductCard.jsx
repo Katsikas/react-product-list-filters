@@ -51,7 +51,9 @@ const ProductCard = ({ product }) => {
             </button>
           </div>
           <div className="add-to-cart">
-            <button onClick={handleAddToCart}>Add to cart</button>
+            <button className="action-btn" onClick={handleAddToCart}>
+              Add to cart
+            </button>
           </div>
         </div>
       </div>

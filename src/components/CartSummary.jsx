@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useCart } from "../context/CardContext";
 
 export default function CartSummary() {
+  const [agreed, setAgreed] = useState(false);
   const { state } = useCart();
   const { cartItems } = state;
 
@@ -16,37 +18,58 @@ export default function CartSummary() {
 
   const total = subTotal - discount + deliveryFee;
 
+  const formatPrice = (price) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(price);
+
   return (
-    <div>
-      <h1>Order Summary</h1>
-      <div>
-        <div>
+    <div className="summary-inner">
+      <h2>Order Summary</h2>
+      <div className="sums">
+        <div className="sub-total">
           <p>Subtotal</p>
-          <p>${subTotal}</p>
+          <p>{formatPrice(subTotal)}</p>
         </div>
 
-        <div>
+        <div className="total-items">
           <p>Total Items</p>
-          <p>${totalItems}</p>
+          <p>{formatPrice(totalItems)}</p>
         </div>
 
-        <div>
+        <div className="discount">
           <p>Discount (-20%)</p>
-          <p>${discount}</p>
+          <p>{formatPrice(discount)}</p>
         </div>
 
-        <div>
+        <div className="delivery-fee">
           <p>Delivery Fee</p>
-          <p>{deliveryFee}</p>
+          <p>{formatPrice(deliveryFee)}</p>
         </div>
       </div>
 
-      <div>
+      <div className="total">
         <p>Total</p>
-        <p>${total}</p>
+        <p>{formatPrice(total)}</p>
+      </div>
+      <div className="terms">
+        <input
+          type="checkbox"
+          id="terms"
+          name="terms"
+          checked={agreed}
+          onChange={(e) => setAgreed(e.target.checked)}
+        />
+        <label htmlFor="terms">I agree with the Terms and Conditions</label>
       </div>
 
-      <button>Go to Checkout</button>
+      <button
+        className={agreed ? "action-btn" : "action-btn disabled"}
+        disabled={!agreed}
+      >
+        Go to Checkout
+      </button>
     </div>
   );
 }

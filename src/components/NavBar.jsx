@@ -52,10 +52,12 @@ const NavBar = ({
           </ul>
 
           <div className="navbar-actions">
-            <Link to={"/cart"}>
-              <span>{totalItems}</span>
-              <img src="/shopping.svg" height={22} width={22} alt="cart" />
-            </Link>
+            <div className="cart-icon">
+              <Link to={"/cart"}>
+                {totalItems > 0 && <span>{totalItems}</span>}
+                <img src="/shopping.svg" height={22} width={22} alt="cart" />
+              </Link>
+            </div>
 
             <button
               type="button"
