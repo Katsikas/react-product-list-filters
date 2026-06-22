@@ -1,14 +1,15 @@
 from django.contrib import admin
-from .models import Category, Product
+from .models import Category, Product, Tag
 
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['title','price',]
+    list_filter = ['tags']
+    list_display = ['title','get_tag', 'price',]
     prepopulated_fields = {'slug': ('title',)}
 
-    def get_category(self):
-        print(self)
+    def get_tag(self,obj):
+        return [tag.caption for tag in obj.tags.all()]
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -16,5 +17,11 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('cat_name',)}
 
 
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['caption']
+
+    
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product,ProductAdmin)
+admin.site.register(Tag,TagAdmin)
