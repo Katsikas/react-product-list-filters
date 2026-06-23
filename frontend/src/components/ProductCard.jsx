@@ -26,7 +26,11 @@ const ProductCard = ({ product }) => {
       <div className="product-details">
         <div className="upper-part">
           <h3>{product.title}</h3>
-          <p className="category">{product.category.toUpperCase()}</p>
+          {product.categories.map((cat) => (
+            <p key={cat.id} className="category">
+              {cat.cat_name.toUpperCase()}
+            </p>
+          ))}
         </div>
 
         <div className="lower-part">
