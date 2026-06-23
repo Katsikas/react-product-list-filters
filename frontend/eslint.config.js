@@ -26,6 +26,7 @@ export default defineConfig([
       "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
+      "react-refresh/only-export-components": "off",
     },
   },
 ]);
