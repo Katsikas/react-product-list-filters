@@ -1,4 +1,5 @@
 import { useCart } from "../context/CardContext";
+import { currencyFormatter } from "../services/formatting";
 
 export default function CartItem({ item }) {
   const { dispatch } = useCart();
@@ -24,7 +25,7 @@ export default function CartItem({ item }) {
           </div>
 
           <div className="item-price">
-            <h2>${item.price}</h2>
+            <h2>{currencyFormatter.format(item.price)}</h2>
             <div className="cart-quantity">
               <img
                 src="/remove.svg"
