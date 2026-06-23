@@ -29,7 +29,7 @@ cd backend
 python manage.py runserver
 ```
 
-### Frontend:
+## Frontend:
 ```
 cd frontend
 npm install
