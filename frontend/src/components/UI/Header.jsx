@@ -41,7 +41,7 @@ const Header = ({
               src="/heart_white.svg"
               height={25}
               width={25}
-              className="logo"
+              className="logo img-transition"
               alt="logo"
             />
           </Link>
@@ -52,9 +52,12 @@ const Header = ({
           </ul>
 
           <div className="navbar-actions">
-            <div className="cart-icon">
+            <div
+              className={`cart-icon ${totalItems ? "has-items" : ""}`}
+              data-items={totalItems}
+            >
               <Link to={"/cart"}>
-                {totalItems > 0 && <span>{totalItems}</span>}
+                {/* {totalItems > 0 && <span>{totalItems}</span>} */}
                 <img src="/shopping.svg" height={22} width={22} alt="cart" />
               </Link>
             </div>
@@ -66,7 +69,11 @@ const Header = ({
                   setShowNav((v) => !v);
                 }}
               >
-                <img src="/burger.svg" alt="search" />
+                <img
+                  src="/burger.svg"
+                  alt="search"
+                  className="img-transition"
+                />
               </button>
             )}
           </div>
