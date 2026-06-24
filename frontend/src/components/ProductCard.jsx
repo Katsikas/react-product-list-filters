@@ -1,6 +1,7 @@
 import AddToFavorites from "./UI/Addtofavorites";
 import { useCart } from "../context/CardContext";
 import { currencyFormatter } from "../services/formatting";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const { dispatch } = useCart();
@@ -25,9 +26,13 @@ const ProductCard = ({ product }) => {
         <div className="upper-part">
           <h3>{product.title}</h3>
           {product.categories.map((cat) => (
-            <p key={cat.id} className="category">
+            <Link
+              key={cat.id}
+              to={`categories/${cat.slug}`}
+              className="category"
+            >
               {cat.cat_name.toUpperCase()}
-            </p>
+            </Link>
           ))}
         </div>
 
