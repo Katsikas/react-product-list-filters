@@ -43,9 +43,12 @@ const Header = ({
             />
           </Link>
           <ul className="navbar-links">
-            <li>**</li>
-            <li>**</li>
-            <li>**</li>
+            <li>
+              <Link to="/"> Home</Link>
+            </li>
+            <li>
+              <Link to="/categories">Categories</Link>
+            </li>
           </ul>
 
           <div className="navbar-actions">
