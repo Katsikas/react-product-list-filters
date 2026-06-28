@@ -16,6 +16,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --typography-size-xsmall: 13px;
+  --color-text-neutral-8: rgba(255, 255, 255, 0.87);
+
   --dark-blue: hsl(216, 43%, 7%);
   --cover-blue: hsl(218, 45%, 10%);
   --action-orange: hsl(29, 100%, 56%);
@@ -115,6 +118,7 @@ nav .img-transition:hover {
   align-items: center;
   flex-direction: row;
   gap: 1em;
+  position: relative;
 }
 
 .navbar-actions .cart-icon {
@@ -128,6 +132,97 @@ nav .img-transition:hover {
   right: 0;
 
   font-weight: 600;
+}
+
+#cart-popover {
+  margin-right: 0.4em;
+  margin-top: 0.4em;
+  inset: auto;
+  position-area: bottom;
+  padding-top: 1em;
+  background-color: var(--cover-blue);
+  border: none;
+  border-radius: 6px;
+  width: 350px;
+}
+
+#cart-popover .cart-quantity {
+  padding: 1em;
+}
+
+#cart-popover .order-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.order-list .cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.order-list .cart-item .cell-pic {
+  box-sizing: content-box;
+  margin-right: 1em;
+  text-align: center;
+  white-space: nowrap;
+  min-width: 45px;
+}
+
+.order-list .cart-item .cell-pic img {
+  display: inline-block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+}
+
+.order-list .cart-item .cell .item-details {
+  position: relative;
+  max-height: 36px;
+  overflow: hidden;
+  font-size: var(--typography-size-xsmall);
+  font-weight: 400;
+  margin-right: 2em;
+  padding-left: 0;
+  color: var(--color-text-neutral-8);
+  font-weight: 500;
+}
+
+.order-list .cart-item .quantity {
+  font-size: var(--typography-size-xsmall);
+  margin-top: 8px;
+  color: var(--color-text-neutral-8);
+  font-weight: 400;
+}
+
+.order-list .cell.remove-item {
+  padding-right: 0;
+  text-align: right;
+  flex-grow: 1;
+}
+
+.order-list .cell.remove-item img {
+  transition: 200ms var(--cube);
+}
+
+.order-list .cell.remove-item img:hover {
+  opacity: 0.8;
+}
+
+#cart-popover .bottom-container {
+  display: flex;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px 0 rgba(255, 255, 255, 0.1);
+  padding: 1.5em;
+}
+
+.btn-full {
+  width: 100%;
+  text-align: center;
 }
 
 .navbar-actions button {
@@ -553,13 +648,13 @@ nav .img-transition:hover {
   margin-top: 10vh;
 }
 
-.categories-grid {
+.categories-page .categories-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2em;
 }
 
-.category {
+.categories-page .category {
   padding: 1em 1.5em;
   border: 2px solid red;
   border-radius: 12px;
