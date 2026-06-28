@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Sidenav from "./Sidenav";
 import { useCart } from "../../context/CardContext";
 import { Link, NavLink } from "react-router-dom";
+import CartPopover from "../CartUI/CartPopover";
 
 const Header = ({
   categories,
@@ -28,6 +29,23 @@ const Header = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  let popoverOrLink = (
+    <>
+      <button popoverTarget="cart-popover">
+        <img src="/shopping.svg" height={22} width={22} alt="cart" />
+      </button>
+      <CartPopover />
+    </>
+  );
+
+  if (ItemsCount === 0) {
+    popoverOrLink = (
+      <Link to={"/cart"}>
+        <img src="/shopping.svg" height={22} width={22} alt="cart" />
+      </Link>
+    );
+  }
 
   return (
     <div>
@@ -56,9 +74,7 @@ const Header = ({
               className={`cart-icon ${ItemsCount ? "has-items" : ""}`}
               data-items={ItemsCount}
             >
-              <Link to={"/cart"}>
-                <img src="/shopping.svg" height={22} width={22} alt="cart" />
-              </Link>
+              {popoverOrLink}
             </div>
             {categories && (
               <button
