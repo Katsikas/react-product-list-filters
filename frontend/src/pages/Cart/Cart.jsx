@@ -1,7 +1,7 @@
-import CartSummary from "../components/CartUI/CartSummary";
-import { useCart } from "../context/CardContext";
+import CartSummary from "../../components/CartUI/CartSummary";
+import { useCart } from "../../context/CardContext";
 import { useNavigate, Navigate } from "react-router-dom";
-import CartItem from "../components/CartUI/CartItem";
+import CartItem from "../../components/CartUI/CartItem";
 
 const Cart = () => {
   const navigate = useNavigate();
