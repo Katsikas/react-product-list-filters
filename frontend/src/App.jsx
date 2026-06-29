@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import ProductsPage from "./pages/ProductsPage";
-import Cart from "./pages/Cart";
-import EmptyCartPage from "./pages/EmptyCartPage";
+import Cart from "./pages/Cart/Cart";
+import EmptyCartPage from "./pages/Cart/EmptyCartPage";
 import NotFound from "./pages/NotFound";
 import Categories from "./pages/Category/Categories";
 import Category from "./pages/Category/Category";
